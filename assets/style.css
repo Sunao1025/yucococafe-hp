@@ -1,0 +1,152 @@
+/* yucoco cafe — design system (2026-07-29, AD: Fable5)
+   コンセプト: 生成りの紙にのせた羊毛のぬくもり。余白で「ほっこり」を作る */
+
+:root {
+  --cream: #FAF6EF;      /* ページ背景: 生成り */
+  --paper: #FFFFFF;      /* カード */
+  --ink: #4A4036;        /* 本文: 黒でなく焦げ茶 */
+  --soft: #8B7D6E;       /* 補助テキスト */
+  --accent: #C98A5E;     /* テラコッタ: フェルトの暖色 */
+  --accent-deep: #B0714A;
+  --accent-soft: #F4E9DC; /* セクション帯 */
+  --line: #E9E0D2;
+  --radius: 20px;
+  --shadow: 0 6px 24px rgba(74, 64, 54, 0.08);
+  --maxw: 1080px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", sans-serif;
+  background: var(--cream);
+  color: var(--ink);
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+  font-size: 16px;
+}
+h1, h2, h3, .wordmark { font-family: "Zen Maru Gothic", "Noto Sans JP", sans-serif; font-weight: 700; }
+img { max-width: 100%; display: block; }
+a { color: var(--accent-deep); text-decoration: none; }
+a:hover { opacity: 0.85; }
+
+/* ---------- ヘッダー ---------- */
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(250, 246, 239, 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.site-header .inner {
+  max-width: var(--maxw); margin: 0 auto; padding: 14px 20px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+}
+.wordmark { font-size: 1.25rem; color: var(--ink); letter-spacing: 0.04em; }
+.wordmark small { display: block; font-size: 0.62rem; font-weight: 400; color: var(--soft); letter-spacing: 0.3em; }
+.nav { display: flex; gap: 22px; align-items: center; flex-wrap: wrap; }
+.nav a { color: var(--ink); font-size: 0.92rem; }
+.nav a.current { color: var(--accent-deep); border-bottom: 2px solid var(--accent); padding-bottom: 2px; }
+.nav .btn-store { background: var(--accent); color: #fff; padding: 8px 18px; border-radius: 999px; font-size: 0.9rem; }
+.nav-toggle { display: none; }
+
+/* ---------- 共通パーツ ---------- */
+.section { max-width: var(--maxw); margin: 0 auto; padding: 72px 20px; }
+.section.tinted { max-width: none; background: var(--accent-soft); }
+.section.tinted > .inner { max-width: var(--maxw); margin: 0 auto; padding: 0 20px; }
+.section-title { font-size: 1.6rem; text-align: center; margin-bottom: 8px; }
+.section-lead { text-align: center; color: var(--soft); margin-bottom: 40px; font-size: 0.95rem; }
+.btn {
+  display: inline-block; background: var(--accent); color: #fff;
+  padding: 14px 34px; border-radius: 999px; font-weight: 700; font-size: 1rem;
+  box-shadow: var(--shadow); border: none; cursor: pointer;
+}
+.btn:hover { background: var(--accent-deep); opacity: 1; }
+.btn.ghost { background: var(--paper); color: var(--accent-deep); border: 1.5px solid var(--accent); box-shadow: none; }
+.card { background: var(--paper); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+
+/* ---------- ヒーロー ---------- */
+.hero { max-width: var(--maxw); margin: 0 auto; padding: 28px 20px 0; }
+.hero-img { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+.hero-img img { width: 100%; height: min(62vh, 560px); object-fit: cover; }
+.hero-copy { text-align: center; padding: 36px 20px 8px; }
+.hero-copy h1 { font-size: clamp(1.25rem, 3.4vw, 1.8rem); line-height: 2; }
+.hero-copy p { color: var(--soft); margin-top: 10px; font-size: 0.95rem; }
+.hero-cta { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; padding: 26px 20px 0; }
+
+/* ---------- グリッド ---------- */
+.grid { display: grid; gap: 20px; }
+.grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+.tile { border-radius: var(--radius); overflow: hidden; position: relative; box-shadow: var(--shadow); background: var(--paper); }
+.tile img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; transition: transform 0.35s ease; cursor: zoom-in; }
+.tile:hover img { transform: scale(1.04); }
+.tile .cap {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(transparent, rgba(74,64,54,0.65));
+  color: #fff; padding: 28px 14px 10px; font-size: 0.9rem; font-family: "Zen Maru Gothic", sans-serif;
+}
+
+/* ---------- works 年表 ---------- */
+.timeline { max-width: 760px; margin: 0 auto; }
+.timeline-item { display: grid; grid-template-columns: 110px 1fr; gap: 18px; padding: 22px 0; border-bottom: 1px dashed var(--line); }
+.timeline-item .year { color: var(--accent-deep); font-weight: 700; font-family: "Zen Maru Gothic", sans-serif; }
+.timeline-item h3 { font-size: 1.02rem; margin-bottom: 4px; }
+.timeline-item p { font-size: 0.92rem; color: var(--soft); }
+.badge { display: inline-block; background: var(--accent-soft); color: var(--accent-deep); border-radius: 999px; padding: 2px 12px; font-size: 0.78rem; margin-right: 8px; }
+
+/* ---------- profile ---------- */
+.profile-wrap { display: grid; grid-template-columns: 300px 1fr; gap: 40px; align-items: start; max-width: 900px; margin: 0 auto; }
+.profile-wrap .photo { border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+
+/* ---------- フォーム ---------- */
+.form { max-width: 560px; margin: 0 auto; display: grid; gap: 18px; }
+.form label { font-weight: 700; font-size: 0.92rem; }
+.form input, .form textarea {
+  width: 100%; padding: 13px 16px; border: 1.5px solid var(--line); border-radius: 12px;
+  background: var(--paper); font: inherit; color: var(--ink); margin-top: 6px;
+}
+.form input:focus, .form textarea:focus { outline: 2px solid var(--accent); border-color: transparent; }
+.form-note { font-size: 0.85rem; color: var(--soft); }
+
+/* ---------- ライトボックス ---------- */
+.lb { position: fixed; inset: 0; background: rgba(40, 33, 27, 0.92); display: none; z-index: 100; }
+.lb.open { display: flex; align-items: center; justify-content: center; }
+.lb img { max-width: 92vw; max-height: 84vh; object-fit: contain; border-radius: 8px; }
+.lb .lb-close { position: absolute; top: 18px; right: 22px; color: #fff; font-size: 2rem; background: none; border: none; cursor: pointer; }
+.lb .lb-prev, .lb .lb-next {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  color: #fff; font-size: 2.4rem; background: none; border: none; cursor: pointer; padding: 20px;
+}
+.lb .lb-prev { left: 4px; } .lb .lb-next { right: 4px; }
+.lb .lb-count { position: absolute; bottom: 18px; left: 50%; transform: translateX(-50%); color: #fff; font-size: 0.9rem; }
+
+/* ---------- フッター ---------- */
+.site-footer { background: #F1EADF; border-top: 1px solid var(--line); margin-top: 72px; }
+.site-footer .inner { max-width: var(--maxw); margin: 0 auto; padding: 44px 20px 28px; text-align: center; }
+.site-footer .links { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin: 14px 0 20px; font-size: 0.9rem; }
+.site-footer .copy { color: var(--soft); font-size: 0.8rem; }
+
+/* PC 限定改行 */
+.only-pc { display: inline; }
+
+/* ライトボックス表示中は背面スクロールを止める */
+body.lb-open { overflow: hidden; }
+
+/* ---------- レスポンシブ ---------- */
+@media (max-width: 767px) {
+  .section { padding: 52px 18px; }
+  .grid.cols-3, .grid.cols-4 { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .profile-wrap { grid-template-columns: 1fr; }
+  .timeline-item { grid-template-columns: 1fr; gap: 4px; }
+  .hero-img img { height: 46vh; }
+  /* ヘッダー圧迫対策: ワードマーク小さく・store ピルは非表示 (CTA はヒーローとフッターにある) */
+  .site-header .inner { flex-direction: column; gap: 6px; padding: 10px 14px; }
+  .wordmark { font-size: 1.05rem; }
+  .wordmark small { display: none; }
+  .nav { gap: 12px; justify-content: center; }
+  .nav a { font-size: 0.86rem; }
+  .nav .btn-store { display: none; }
+  /* 見出しの意図しない多段折返し防止 */
+  .hero-copy h1 br { display: none; }
+  .only-pc { display: none; }
+}
