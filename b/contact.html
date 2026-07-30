@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>お問い合わせ | 羊毛フェルト yucoco cafe さくだゆうこ</title>
+<meta name="description" content="羊毛フェルトの作品や講座について、yucoco cafe さくだゆうこへのお問い合わせページです。お名前・メールアドレス・ご用件をお送りください。">
+<meta property="og:title" content="お問い合わせ | 羊毛フェルト yucoco cafe さくだゆうこ"><meta property="og:type" content="website">
+<meta property="og:url" content="https://yucococafe.jp/b/contact.html">
+<meta property="og:description" content="羊毛フェルトの作品や講座について、yucoco cafe さくだゆうこへのお問い合わせページです。お名前・メールアドレス・ご用件をお送りください。">
+<!-- 要確認: 公開ドメインが yucococafe.jp で確定するまでの仮 URL。確定後に見直すこと -->
+<meta property="og:image" content="https://yucococafe.jp/b/assets/img/hero.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@400;500;600&family=Cormorant+Garamond:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="inner">
+    <a href="index.html" class="wordmark">yucoco cafe<small>NEEDLE FELT</small></a>
+    <nav class="nav">
+      <a href="index.html">top</a>
+      <a href="gallery.html">collection</a>
+      <a href="works.html">works</a>
+      <a href="profile.html">profile</a>
+      <a href="contact.html" class="current">お問い合わせ</a>
+      <a href="https://store.yucococafe.jp" class="btn-store">ONLINE STORE</a>
+    </nav>
+  </div>
+</header>
+
+<section class="section">
+  <div class="reveal contact-head">
+    <h1 class="section-title">CONTACT</h1>
+    <p class="section-sub">お問い合わせ</p>
+    <hr class="rule">
+    <p class="contact-lead">作品のことや講座のこと、気になることがあればお気軽にどうぞ<br>お返事まで少しお時間をいただくことがあります</p>
+  </div>
+
+  <!-- 本番接続時: 送信内容を DM Assistant 受信箱へ POST する予定（source: source_backup/pages/contact.html の contact_form を踏襲、電話番号欄は撤去） -->
+  <div id="contact-notice" class="contact-notice reveal" aria-live="polite">
+    <p>フォームは現在準備中です。お急ぎの場合は Instagram の DM または、オンラインストアの「商品について問い合わせる」からご連絡くださいませ。</p>
+    <p><a href="https://www.instagram.com/yucococafe/">Instagram (@yucococafe) を見る</a></p>
+  </div>
+
+  <form class="form reveal" id="contact-form">
+    <div>
+      <label for="name">お名前<span aria-hidden="true">*</span></label>
+      <input type="text" id="name" name="name" required autocomplete="name">
+    </div>
+    <div>
+      <label for="email">メールアドレス<span aria-hidden="true">*</span></label>
+      <input type="email" id="email" name="email" required autocomplete="email">
+    </div>
+    <div>
+      <label for="message">本文<span aria-hidden="true">*</span></label>
+      <textarea id="message" name="message" rows="6" required></textarea>
+    </div>
+    <button type="submit" class="btn">送信する</button>
+  </form>
+
+  <div class="form-note contact-privacy reveal">
+    <p><strong>個人情報の取り扱いについて</strong></p>
+    <p>お問い合わせフォームでいただいたお名前・メールアドレス・本文などの個人情報は、お問い合わせへのお返事のためだけに使わせていただきます。ご本人の同意なく第三者へお渡しすることはありませんので、安心してご連絡くださいね。</p>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="inner">
+    <div class="wordmark">yucoco cafe<small>NEEDLE FELT</small></div>
+    <div class="links">
+      <a href="https://store.yucococafe.jp">online store</a>
+      <a href="https://www.instagram.com/yucococafe/">instagram</a>
+      <a href="https://minne.com/@yucococafe">minne</a>
+      <a href="contact.html">お問い合わせ</a>
+    </div>
+    <p class="copy">羊毛フェルトでつくった動物たちと、おうちカフェにほっこり癒しと幸せ気分を<br>© yucoco cafe / さくだゆうこ</p>
+  </div>
+</footer>
+
+<script src="assets/reveal.js"></script>
+<script>
+  document.getElementById('contact-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    document.getElementById('contact-notice').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+</script>
+
+<style>
+  .contact-head { text-align: center; }
+  .contact-lead { color: var(--muted); font-size: 0.9rem; letter-spacing: 0.12em; margin-top: 6px; }
+  .contact-notice {
+    max-width: 540px; margin: 64px auto 56px; padding: 30px 34px;
+    border: 1px solid var(--line); text-align: center;
+  }
+  .contact-notice p { font-size: 0.86rem; color: var(--muted); letter-spacing: 0.1em; }
+  .contact-notice p + p { margin-top: 14px; }
+  .contact-notice a { border-bottom: 1px solid var(--line); }
+  .contact-privacy { max-width: 540px; margin: 48px auto 0; text-align: center; }
+  .contact-privacy p { font-size: 0.8rem; letter-spacing: 0.08em; }
+  .contact-privacy p strong { display: inline-block; margin-bottom: 10px; letter-spacing: 0.16em; color: var(--ink); }
+  .contact-privacy p + p { margin-top: 4px; }
+  .form label span[aria-hidden="true"] { color: var(--bronze); margin-left: 2px; }
+
+  /* レビュー指摘対応: 768-899px 帯のヘッダー2段折返し(151.9px肥大)・320-375pxのnav圧迫を縮退 */
+  @media (min-width: 768px) and (max-width: 899px) {
+    .nav { gap: 18px; }
+    .nav .btn-store { display: none; }
+    .wordmark small { display: none; }
+  }
+  @media (max-width: 400px) {
+    .nav { gap: 12px; }
+    .nav a { font-size: 0.72rem; letter-spacing: 0.1em; }
+  }
+</style>
+
+</body>
+</html>

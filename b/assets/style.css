@@ -1,0 +1,174 @@
+/* yucoco cafe — B案デザインシステム「静かなギャラリー」(2026-07-30, AD: Fable5)
+   コンセプト: 美術館の白い空間に、一点ものの作品を展示する。
+   余白は贅沢、言葉は少なく、写真は大きく。手しごとの気配を「静けさ」で伝える */
+
+:root {
+  --white: #FDFCF9;       /* 展示室の白 (わずかに温かい) */
+  --paper: #FFFFFF;
+  --ink: #2B2622;         /* 墨に近い焦げ茶 */
+  --muted: #8A8178;
+  --bronze: #A3875C;      /* アンティークゴールド: 唯一の彩り */
+  --line: #E7E1D6;
+  --maxw: 1040px;
+  --serif: "Shippori Mincho", "Hiragino Mincho ProN", serif;
+  --latin: "Cormorant Garamond", serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--serif);
+  background: var(--white);
+  color: var(--ink);
+  line-height: 2.2;
+  letter-spacing: 0.06em;
+  font-size: 15px;
+  font-weight: 400;
+}
+img { max-width: 100%; display: block; }
+a { color: var(--ink); text-decoration: none; transition: opacity 0.3s; }
+a:hover { opacity: 0.6; }
+
+/* ---------- ヘッダー: 静かに、細く ---------- */
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(253, 252, 249, 0.94);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.site-header .inner {
+  max-width: var(--maxw); margin: 0 auto; padding: 20px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+}
+.wordmark {
+  font-family: var(--latin); font-size: 1.3rem; font-weight: 500;
+  letter-spacing: 0.35em; text-transform: lowercase; color: var(--ink);
+}
+.wordmark small { display: block; font-size: 0.55rem; letter-spacing: 0.5em; color: var(--muted); font-family: var(--serif); }
+.nav { display: flex; gap: 28px; align-items: center; flex-wrap: wrap; }
+.nav a { font-size: 0.82rem; letter-spacing: 0.18em; }
+.nav a.current { color: var(--bronze); }
+.nav .btn-store {
+  border: 1px solid var(--ink); padding: 9px 22px; font-size: 0.78rem; letter-spacing: 0.22em;
+  transition: all 0.3s;
+}
+.nav .btn-store:hover { background: var(--ink); color: var(--white); opacity: 1; }
+
+/* ---------- 共通 ---------- */
+.section { max-width: var(--maxw); margin: 0 auto; padding: 110px 24px; }
+.section-title {
+  text-align: center; margin-bottom: 12px;
+  font-family: var(--latin); font-size: 1.9rem; font-weight: 500; letter-spacing: 0.3em;
+}
+.section-sub { text-align: center; color: var(--muted); font-size: 0.82rem; letter-spacing: 0.25em; margin-bottom: 64px; }
+.rule { width: 40px; height: 1px; background: var(--bronze); margin: 26px auto; border: none; }
+.btn {
+  display: inline-block; border: 1px solid var(--ink); color: var(--ink);
+  padding: 15px 52px; font-size: 0.86rem; letter-spacing: 0.28em;
+  background: transparent; cursor: pointer; transition: all 0.35s;
+}
+.btn:hover { background: var(--ink); color: var(--white); opacity: 1; }
+.btn.filled { background: var(--ink); color: var(--white); }
+.btn.filled:hover { background: var(--bronze); border-color: var(--bronze); }
+
+/* ---------- ヒーロー: 全幅の静寂 ---------- */
+.hero { padding: 0; }
+.hero-img { height: min(78vh, 720px); overflow: hidden; }
+.hero-img img { width: 100%; height: 100%; object-fit: cover; }
+.hero-copy { text-align: center; padding: 84px 24px 0; }
+.hero-copy .en {
+  font-family: var(--latin); font-size: 0.85rem; letter-spacing: 0.5em; color: var(--bronze);
+  text-transform: uppercase; margin-bottom: 22px;
+}
+.hero-copy h1 {
+  font-size: clamp(1.15rem, 2.6vw, 1.55rem); font-weight: 500; line-height: 2.4; letter-spacing: 0.14em;
+}
+.hero-copy .byline { color: var(--muted); margin-top: 26px; font-size: 0.85rem; letter-spacing: 0.2em; }
+.hero-cta { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; padding: 56px 24px 0; }
+
+/* ---------- 作品展示 ---------- */
+.grid { display: grid; gap: 40px 28px; }
+.grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+.grid.cols-2 { grid-template-columns: repeat(2, 1fr); }
+.piece { cursor: zoom-in; }
+.piece figure { overflow: hidden; background: var(--paper); }
+.piece img { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; transition: transform 1.2s cubic-bezier(0.2, 0.6, 0.2, 1); }
+.piece:hover img { transform: scale(1.045); }
+.piece figcaption {
+  margin-top: 14px; text-align: center; font-size: 0.8rem; color: var(--muted); letter-spacing: 0.16em;
+}
+
+/* 大判 1 点見せ */
+.feature-piece { max-width: 760px; margin: 0 auto; }
+.feature-piece img { width: 100%; }
+
+/* ---------- works 年表 ---------- */
+.timeline { max-width: 680px; margin: 0 auto; }
+.timeline-item {
+  display: grid; grid-template-columns: 96px 1fr; gap: 26px;
+  padding: 30px 0; border-bottom: 1px solid var(--line);
+}
+.timeline-item .year { font-family: var(--latin); font-size: 1.05rem; color: var(--bronze); letter-spacing: 0.12em; }
+.timeline-item h3 { font-size: 0.98rem; font-weight: 600; margin-bottom: 6px; letter-spacing: 0.08em; }
+.timeline-item p { font-size: 0.86rem; color: var(--muted); }
+.timeline-item a { border-bottom: 1px solid var(--line); }
+.badge { display: inline-block; color: var(--bronze); border: 1px solid var(--line); padding: 1px 12px; font-size: 0.72rem; letter-spacing: 0.2em; margin-right: 10px; }
+
+/* ---------- profile ---------- */
+.profile-wrap { display: grid; grid-template-columns: 340px 1fr; gap: 64px; align-items: start; max-width: 920px; margin: 0 auto; }
+.profile-wrap .photo img { width: 100%; }
+.profile-wrap .lead { font-size: 1.02rem; line-height: 2.6; }
+.sign { margin-top: 36px; font-family: var(--latin); letter-spacing: 0.3em; color: var(--muted); }
+
+/* ---------- フォーム ---------- */
+.form { max-width: 540px; margin: 0 auto; display: grid; gap: 26px; }
+.form label { font-size: 0.84rem; letter-spacing: 0.2em; }
+.form input, .form textarea {
+  width: 100%; padding: 13px 4px; border: none; border-bottom: 1px solid var(--line);
+  background: transparent; font: inherit; color: var(--ink); margin-top: 4px;
+  border-radius: 0;
+}
+.form input:focus, .form textarea:focus { outline: none; border-bottom-color: var(--bronze); }
+.form-note { font-size: 0.8rem; color: var(--muted); }
+
+/* ---------- ライトボックス ---------- */
+.lb { position: fixed; inset: 0; background: rgba(24, 21, 18, 0.95); display: none; z-index: 100; }
+.lb.open { display: flex; align-items: center; justify-content: center; }
+.lb img { max-width: 90vw; max-height: 82vh; object-fit: contain; }
+.lb .lb-close { position: absolute; top: 20px; right: 26px; color: #fff; font-size: 1.7rem; background: none; border: none; cursor: pointer; font-family: var(--latin); }
+.lb .lb-prev, .lb .lb-next { position: absolute; top: 50%; transform: translateY(-50%); color: #fff; font-size: 2rem; background: none; border: none; cursor: pointer; padding: 24px; font-family: var(--latin); }
+.lb .lb-prev { left: 6px; } .lb .lb-next { right: 6px; }
+.lb .lb-count { position: absolute; bottom: 22px; left: 50%; transform: translateX(-50%); color: #ccc; font-size: 0.8rem; font-family: var(--latin); letter-spacing: 0.2em; }
+body.lb-open { overflow: hidden; }
+
+/* ---------- スクロールで静かに現れる ----------
+   html.js は reveal.js が付与。JS が動かない環境では素の表示のまま (安全側) */
+html.js .reveal { opacity: 0; transform: translateY(24px); transition: opacity 1s ease, transform 1s ease; }
+html.js .reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { html.js .reveal { opacity: 1; transform: none; transition: none; } }
+
+/* ---------- フッター ---------- */
+.site-footer { border-top: 1px solid var(--line); margin-top: 110px; }
+.site-footer .inner { max-width: var(--maxw); margin: 0 auto; padding: 64px 24px 40px; text-align: center; }
+.site-footer .links { display: flex; gap: 30px; justify-content: center; flex-wrap: wrap; margin: 20px 0 28px; font-size: 0.82rem; letter-spacing: 0.18em; }
+.site-footer .copy { color: var(--muted); font-size: 0.74rem; letter-spacing: 0.12em; line-height: 2; }
+
+/* ---------- レスポンシブ ---------- */
+.only-pc { display: inline; }
+@media (max-width: 767px) {
+  .section { padding: 72px 20px; }
+  .grid.cols-3 { grid-template-columns: repeat(2, 1fr); gap: 24px 14px; }
+  .grid.cols-2 { grid-template-columns: 1fr; }
+  .profile-wrap { grid-template-columns: 1fr; gap: 36px; }
+  .timeline-item { grid-template-columns: 1fr; gap: 2px; }
+  .hero-img { height: 56vh; }
+  .hero-copy { padding-top: 56px; }
+  .hero-copy h1 br { display: none; }
+  .site-header .inner { flex-direction: column; gap: 8px; padding: 14px 16px; }
+  .wordmark { font-size: 1.1rem; }
+  .wordmark small { display: none; }
+  .nav { gap: 16px; justify-content: center; }
+  .nav a { font-size: 0.78rem; }
+  .nav .btn-store { display: none; }
+  .only-pc { display: none; }
+}
