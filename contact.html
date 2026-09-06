@@ -37,8 +37,8 @@
 
   <div class="card contact-notice">
     <p>お問い合わせは、下記のメールアドレスまでお願いいたします。</p>
-    <p class="contact-email"><a href="mailto:info@yucococafe.jp">info@yucococafe.jp</a></p>
-    <p class="contact-sub">下のフォームに入力して「メールを作成する」を押すと、この宛先への下書きがメールアプリに開きます。<br>Instagram の DM からもご連絡いただけます（<a href="https://www.instagram.com/yucococafe/">@yucococafe</a>）。</p>
+    <p class="contact-email"><a href="#" id="yc-mail" data-u="info" data-d="yucococafe.jp" rel="nofollow">メールアドレスを表示する</a></p>
+    <p class="contact-sub">上のリンクを押すとアドレスが表示されます。下のフォームに入力して「メールを作成する」を押すと、この宛先への下書きがメールアプリに開きます。<br>Instagram の DM からもご連絡いただけます（<a href="https://www.instagram.com/yucococafe/">@yucococafe</a>）。</p>
   </div>
 
   <form class="form" id="contact-form">
@@ -73,14 +73,22 @@
 </footer>
 
 <script>
-  // フォーム内容から info@yucococafe.jp 宛のメール下書きを開く
+  // メールアドレスは収集ボット対策のため HTML に直書きせず、表示時に組み立てる
+  var ycMail = document.getElementById('yc-mail');
+  function ycAddr() { return ycMail.getAttribute('data-u') + '@' + ycMail.getAttribute('data-d'); }
+  ycMail.addEventListener('click', function (e) {
+    e.preventDefault();
+    ycMail.textContent = ycAddr();
+    ycMail.setAttribute('href', 'mailto:' + ycAddr());
+  });
+  // フォーム内容からメール下書きを開く
   document.getElementById('contact-form').addEventListener('submit', function (e) {
     e.preventDefault();
     var name = document.getElementById('name').value.trim();
     var message = document.getElementById('message').value.trim();
     var subject = 'ホームページからのお問い合わせ（' + name + ' 様）';
     var body = 'お名前: ' + name + '\n\n' + message;
-    location.href = 'mailto:info@yucococafe.jp?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    location.href = 'mailto:' + ycAddr() + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
   });
 </script>
 
