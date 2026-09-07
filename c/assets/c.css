@@ -60,3 +60,10 @@
   .job { grid-template-columns: 1fr; gap: 2px; }
   .facts-table th { width: 96px; }
 }
+/* A案のページ内 CSS に依存していた部分を C 案でも定義 */
+.more { text-align: center; margin-top: 30px; }
+.more a:not(.btn) { font-size: 0.95rem; font-family: "Zen Maru Gothic", sans-serif; }
+.profile { display: grid; grid-template-columns: 300px 1fr; gap: 36px; align-items: start; max-width: 860px; margin: 0 auto; }
+.profile-img img { width: 100%; height: auto; border-radius: var(--radius); box-shadow: var(--shadow); }
+.profile-text p + p { margin-top: 12px; }
+@media (max-width: 767px) { .profile { grid-template-columns: 1fr; gap: 18px; } .profile-img { max-width: 260px; margin: 0 auto; } }
