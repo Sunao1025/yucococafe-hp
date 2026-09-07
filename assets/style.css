@@ -157,3 +157,11 @@ p, li, figcaption, .section-lead, .cap { text-wrap: pretty; }
 body { word-break: auto-phrase; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .timeline-item .year.is-repeat { visibility: hidden; }
+
+/* キット写真のキャプションは 1 行に収める / 年表「その他」の間隔 */
+.kit-grid .tile .cap { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.timeline-item.other-start { margin-top: 40px; border-top: 1px dashed var(--line); padding-top: 30px; }
+@media (max-width: 767px) {
+  .kit-grid .tile .cap { font-size: 0.72rem; padding: 22px 8px 8px; }
+  .timeline-item.other-start { margin-top: 28px; padding-top: 22px; }
+}
