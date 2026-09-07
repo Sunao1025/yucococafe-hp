@@ -168,3 +168,9 @@ body { word-break: auto-phrase; }
 
 /* タイルのキャプション: 2 行になる時は均等に分ける (1 文字だけの行を防ぐ) */
 .tile .cap { text-wrap: balance; }
+
+/* スマホ: タイルのキャプションを少し小さく・余白を詰めて 1 文字だけの行を防ぐ / 短いリンクは折り返さない */
+@media (max-width: 767px) {
+  .tile .cap { font-size: 0.78rem; padding: 22px 10px 8px; }
+}
+.shop-card .shop-link a, .more a { white-space: nowrap; }
