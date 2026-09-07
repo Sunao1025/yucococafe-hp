@@ -150,3 +150,11 @@ body.lb-open { overflow: hidden; }
   .hero-copy h1 br { display: none; }
   .only-pc { display: none; }
 }
+
+/* ---------- 行末の孤立文字 (1〜3文字だけの最終行) 対策 / 年表の同一年まとめ ---------- */
+h1, h2, h3 { text-wrap: balance; }
+p, li, figcaption, .section-lead, .cap { text-wrap: pretty; }
+body { word-break: auto-phrase; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.timeline-item.same-year { border-top-style: dotted; }
+.timeline-item .year.is-repeat { visibility: hidden; }
