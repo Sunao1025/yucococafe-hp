@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>お仕事のご相談 | 羊毛フェルト yucoco cafe さくだゆうこ</title>
+<meta name="description" content="羊毛フェルト作家 さくだゆうこ（yucoco cafe）へのお仕事のご相談・お問い合わせページです。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+<link rel="stylesheet" href="assets/c.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="inner">
+    <a href="index.html" class="wordmark">yucoco cafe<small>NEEDLE FELT</small></a>
+    <nav class="nav">
+      <a href="index.html">トップ</a>
+      <a href="oshigoto.html">これまでのお仕事</a>
+      <a href="gallery.html">作品</a>
+      <a href="profile.html">プロフィール</a>
+      <a href="contact.html" class="btn-consult">お仕事のご相談</a>
+    </nav>
+  </div>
+</header>
+<main>
+<section class="section">
+  <h1 class="section-title">お仕事のご相談</h1>
+  <p class="section-lead">書籍やキット、キャラクター制作、展示、講座など、企業・団体のご担当者さまからのご相談をお受けしています。<br>内容や時期が決まっていなくても大丈夫です。わかる範囲でお知らせください。</p>
+
+  <form class="form" id="contact-form">
+    <div>
+      <label for="company">会社名・団体名／部署<span aria-hidden="true">*</span></label>
+      <input type="text" id="company" name="company" required autocomplete="organization">
+    </div>
+    <div>
+      <label for="name">お名前<span aria-hidden="true">*</span></label>
+      <input type="text" id="name" name="name" required autocomplete="name">
+    </div>
+    <div>
+      <label for="kind">ご相談の種類</label>
+      <select id="kind" name="kind">
+        <option>本のための作品づくり（著書・装丁・誌面）</option>
+        <option>キット・商品の共同開発</option>
+        <option>キャラクター制作・作品提供</option>
+        <option>展示・イベント</option>
+        <option>講座・ワークショップ</option>
+        <option>取材・掲載</option>
+        <option>その他</option>
+      </select>
+    </div>
+    <div>
+      <label for="when">ご希望の時期（未定でも大丈夫です）</label>
+      <input type="text" id="when" name="when" placeholder="例: 来年春ごろ／未定">
+    </div>
+    <div>
+      <label for="message">ご相談の内容<span aria-hidden="true">*</span></label>
+      <textarea id="message" name="message" rows="7" required placeholder="企画の概要、作品の点数や大きさ、使われ方など、わかる範囲で"></textarea>
+    </div>
+    <button type="submit" class="btn">メールを作成する</button>
+    <p class="form-note">「メールを作成する」を押すと、入力内容が入った下書きがお使いのメールアプリに開きます。そのまま送信してください。宛先: <a href="#" id="yc-mail" data-u="info" data-d="yucococafe.jp" rel="nofollow">メールアドレスを表示する</a></p>
+    <noscript><p class="form-note">メール: info（アットマーク）yucococafe.jp</p></noscript>
+  </form>
+
+  <div class="aside-note">
+    <p><strong>作品のご購入やキットについて（個人のお客さま）</strong><br>お迎えいただける作品は <a href="https://store.yucococafe.jp" target="_blank" rel="noopener">online store</a> に、新作のお知らせは <a href="https://www.instagram.com/yucococafe/" target="_blank" rel="noopener">Instagram（@yucococafe）</a> に載せています。ご質問は Instagram の DM でもどうぞ。</p>
+  </div>
+
+  <div class="form-note contact-privacy">
+    <p><strong>個人情報の取り扱いについて</strong></p>
+    <p>いただいたお名前・ご連絡先・ご相談内容は、お返事とお仕事のやりとりのためだけに使わせていただきます。ご本人の同意なく第三者へお渡しすることはありません。</p>
+  </div>
+</section>
+</main>
+<footer class="site-footer">
+  <div class="inner">
+    <div class="wordmark">yucoco cafe<small>NEEDLE FELT</small></div>
+    <div class="links">
+      <a href="oshigoto.html">これまでのお仕事</a>
+      <a href="contact.html">お仕事のご相談</a>
+      <a href="https://store.yucococafe.jp">online store</a>
+      <a href="https://www.instagram.com/yucococafe/">Instagram</a>
+    </div>
+    <p class="copy">© yucoco cafe / さくだゆうこ　羊毛フェルトでつくった動物たちと、おうちカフェにほっこり癒しと幸せ気分を</p>
+  </div>
+</footer>
+
+<script>
+  var ycMail = document.getElementById('yc-mail');
+  function ycAddr() { return ycMail.getAttribute('data-u') + '@' + ycMail.getAttribute('data-d'); }
+  ycMail.addEventListener('click', function (e) { e.preventDefault(); ycMail.textContent = ycAddr(); ycMail.setAttribute('href', 'mailto:' + ycAddr()); });
+  document.getElementById('contact-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var v = function (id) { return document.getElementById(id).value.trim(); };
+    var subject = '【お仕事のご相談】' + v('company') + '　' + v('name') + ' 様';
+    var body = '会社名・団体名／部署: ' + v('company') + '\nお名前: ' + v('name') + '\nご相談の種類: ' + v('kind') + '\nご希望の時期: ' + (v('when') || '未定') + '\n\n' + v('message');
+    location.href = 'mailto:' + ycAddr() + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+  });
+</script>
+<style>
+  .form select { width: 100%; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; font: inherit; background: var(--paper); color: var(--ink); }
+  .form label span[aria-hidden="true"] { color: var(--accent-deep); }
+  .contact-privacy { max-width: 560px; margin: 32px auto 0; }
+  .contact-privacy p + p { margin-top: 8px; }
+</style>
+</body>
+</html>
